@@ -1,0 +1,19 @@
+.row {
+    background-color: gray;
+}
+
+.card {
+    max-width: 35rem;
+    min-height: 24rem;
+}
+
+.carta {
+    position: relative;
+    width: 150px;
+    left: 100px;
+    margin-left: -75px;
+}
+
+#computadora-cartas, #jugador-cartas {
+    height: 240px;
+}
