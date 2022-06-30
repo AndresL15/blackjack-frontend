@@ -1,19 +1,28 @@
-.row {
+.container {
     background-color: gray;
+    height: 400px;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
-.card {
-    max-width: 35rem;
-    min-height: 24rem;
+#tablero {
+    background-color: gray;
+    height: 400px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#player{
+    background-color:darkgrey;
+    height: 300px;
+}
+
+#playername{
+    background-color:cadetblue;
+    box-shadow: inset;
 }
 
 .carta {
-    position: relative;
-    width: 150px;
-    left: 100px;
-    margin-left: -75px;
+    width: 100px;
 }
-
-#computadora-cartas, #jugador-cartas {
-    height: 240px;
-}
+ 

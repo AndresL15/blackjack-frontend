@@ -49,43 +49,57 @@ export default function Register() {
 
   return (
     <GlobalContent>
-      <FormTitle>Registrar Usuario</FormTitle>
-      <Form>
-        <div className="mb-2">
-          <FormInput
-            label="Usuario"
-            name="name"
-            value={name}
-            errorHandler={errorHandler}
-            onChange={(e) => setName(e.target.value)}
-          />
+      <div className="container">
+        <div className="row">
+          <FormTitle>Registrar Usuario</FormTitle>
+          <Form>
+            <div className="col-sm-4">
+              <div className="mb-2">
+                <FormInput
+                  label="Usuario"
+                  name="name"
+                  value={name}
+                  errorHandler={errorHandler}
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="col-sm-4">
+              <div className="mb-2">
+                <FormPassword
+                  label="Password"
+                  name="password"
+                  value={password}
+                  errorHandler={errorHandler}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="col-sm-4">
+              <div className="mb-2">
+                <FormPassword
+                  label="Repetir Password"
+                  name="password2"
+                  value={password2}
+                  errorHandler={errorHandler}
+                  onChange={(e) => setPassword2(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-sm-4">
+                <div className="mb-2">
+                  <DangerLabel message={errorHandler.errorMessage} />
+                  <FormButtonBar>
+                    <FormAcceptButton label="Registrarse" onClick={registerClick} />
+                    <FormButton label="Cancelar" onClick={() => history("/")} />
+                  </FormButtonBar>
+                </div>
+              </div>
+            </div>
+          </Form>
         </div>
-        <div className="mb-2">
-          <FormPassword
-            label="Password"
-            name="password"
-            value={password}
-            errorHandler={errorHandler}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div className="mb-2">
-          <FormPassword
-            label="Repetir Password"
-            name="password2"
-            value={password2}
-            errorHandler={errorHandler}
-            onChange={(e) => setPassword2(e.target.value)}
-          />
-        </div>
-        <div className="mb-2">
-          <DangerLabel message={errorHandler.errorMessage} />
-          <FormButtonBar>
-            <FormAcceptButton label="Registrarse" onClick={registerClick} />
-            <FormButton label="Cancelar" onClick={() => history("/")} />
-          </FormButtonBar>
-        </div>
-      </Form>
+      </div>
     </GlobalContent>
   )
 }

@@ -32,7 +32,7 @@ export async function login(params: {
   password: string
 }): Promise<Token> {
   const res = (
-    await axios.post(environment.backendUrl + "/login", params)
+    await axios.post(environment.backendUrl +  "/users/login", params)
   ).data as Token
   setCurrentToken(res.token)
   updateSessionToken(res.token)
@@ -45,7 +45,7 @@ export async function logout(): Promise<void> {
   localStorage.removeItem("user")
 
   try {
-    await axios.get(environment.backendUrl + "/logout")
+    await axios.get(environment.backendUrl + "/users/logout")
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     axios.defaults.headers.common.Authorization = ""
     return

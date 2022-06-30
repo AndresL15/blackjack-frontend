@@ -1,5 +1,9 @@
+import '../blackjack/blackjack.css';
+
 export default function Welcome() {
     return (
-        <h1>Welcome</h1>
+        <div className="container">
+            <h1>Welcome</h1>
+        </div>
     );
 }

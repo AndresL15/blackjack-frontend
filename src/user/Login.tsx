@@ -51,30 +51,42 @@ export default function Login() {
 
     return (
         <GlobalContent>
-            <FormTitle>Login</FormTitle>
-            <Form>
-                <div className="mb-2">
-                    <FormInput
-                        label="Usuario"
-                        name="name"
-                        errorHandler={errorHandler}
-                        onChange={(event) => setUserName(event.target.value)} />
+            <div className="container">
+                <div className="row">
+                    <FormTitle>Login</FormTitle>
+                    <Form>
+                        <div className="col-sm-4">
+                            <div className="mb-2">
+                                <FormInput
+                                    label="Usuario"
+                                    name="name"
+                                    errorHandler={errorHandler}
+                                    onChange={(event) => setUserName(event.target.value)} />
+                            </div>
+                        </div>
+                        <div className="col-sm-4">
+                            <div className="mb-2">
+                                <FormPassword
+                                    label="Password"
+                                    name="password"
+                                    errorHandler={errorHandler}
+                                    onChange={(event) => setPassword(event.target.value)} />
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-4">
+                                <div className="mb-2">
+                                    <DangerLabel message={errorHandler.errorMessage} />
+                                    <FormButtonBar>
+                                        <FormAcceptButton label="Login" onClick={loginClick} />
+                                        <FormButton label="Cancelar" onClick={() => history('/')} />
+                                    </FormButtonBar>
+                                </div>
+                            </div>
+                        </div>
+                    </Form>
                 </div>
-                <div className="mb-2">
-                    <FormPassword
-                        label="Password"
-                        name="password"
-                        errorHandler={errorHandler}
-                        onChange={(event) => setPassword(event.target.value)} />
-                </div>
-                <div className="mb-2">
-                    <DangerLabel message={errorHandler.errorMessage} />
-                    <FormButtonBar>
-                        <FormAcceptButton label="Login" onClick={loginClick} />
-                        <FormButton label="Cancelar" onClick={() => history('/')} />
-                    </FormButtonBar>
-                </div>
-            </Form >
+            </div>
         </GlobalContent >
     )
 }

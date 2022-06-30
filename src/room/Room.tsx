@@ -10,6 +10,7 @@ import FormButtonBar from "../common/components/FormButtonBar";
 import FormAcceptButton from "../common/components/FormAcceptButton";
 import FormButton from "../common/components/FormButton";
 import { create } from "./roomService";
+import { User } from "../user/userService";
 
 export function Room() {
 
@@ -17,12 +18,18 @@ export function Room() {
     const errorHandler = useErrorHandler()
 
     const [name, setName] = useState("")
-    
+    const [desc, setDesc] = useState("")
+
+    let user: User
+    user = JSON.parse(`${localStorage.getItem("user")}`);
+
     const createClick = async () => {
         const player = localStorage.getItem("user");
         try {
             await create({
-                name
+                name,
+                desc,
+                user_id: user.id
             })
             history("/joinroom")
         } catch (error) {
@@ -32,21 +39,45 @@ export function Room() {
 
     return (
         <GlobalContent>
-            <FormTitle>Crear Sala</FormTitle>
-            <Form>
-                <FormInput
-                    label="Nombre"
-                    name="name"
-                    errorHandler={errorHandler}
-                    onChange={(event) => setName(event.target.value)} />
-                <DangerLabel message={errorHandler.errorMessage} />
-                <FormButtonBar>
-                    <FormAcceptButton label="Crear" onClick={createClick} />
-                </FormButtonBar>
-            </Form >
-            <FormTitle>Entrar en una sala</FormTitle>
-            <FormButton label="Entrar en una sala" onClick={() => history('/joinroom')} />
-            <FormButton label="Cancelar" onClick={() => history('/')} />
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-6">
+                        <FormTitle>Crear Sala</FormTitle>
+                        <Form>
+                            <div className="mb-2">
+                                <FormInput
+                                    label="Nombre"
+                                    name="name"
+                                    errorHandler={errorHandler}
+                                    onChange={(event) => setName(event.target.value)} />
+                                <DangerLabel message={errorHandler.errorMessage} />
+                            </div>
+                            <div className="mb-2">
+                                <FormInput
+                                    label="Descripcion"
+                                    name="desc"
+                                    errorHandler={errorHandler}
+                                    onChange={(event) => setDesc(event.target.value)} />
+                            </div>
+                            <div className="mb-2">
+                                <DangerLabel message={errorHandler.errorMessage} />
+                                <FormButtonBar>
+                                    <FormAcceptButton label="Crear" onClick={createClick} />
+                                </FormButtonBar>
+                            </div>
+                        </Form>
+                    </div>
+                    <div className="col-sm-6">
+                        <FormTitle>Entrar en una sala</FormTitle>
+                        <div className="mt-5 mb-2">
+                            <FormButton label="Entrar en una sala" onClick={() => history('/joinroom')} />
+                        </div>
+                        <div className="mb-2">
+                            <FormButton label="Cancelar" onClick={() => history('/')} />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </GlobalContent >
     );
 }
